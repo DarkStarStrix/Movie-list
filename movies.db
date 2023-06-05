@@ -1,0 +1,34 @@
+new_movie = Movie.new
+    @new_movie.title = params[:title]
+    @new_movie.year = params[:year]
+    @new_movie.plot = params[:plot]
+    @new_movie.director_id = params[:director_id]
+    @new_movie.image_url = params[:image_url]
+    @new_movie.save
+    redirect_to("http://localhost:3000/movies")
+  end
+
+  def edit_form
+    @movie = Movie.find(params[:id])
+    render("movies/edit_form.html.erb")
+  end
+
+  def update_row
+    @movie = Movie.find(params[:id])
+    @movie.title = params[:title]
+    @movie.year = params[:year]
+    @movie.plot = params[:plot]
+    @movie.director_id = params[:director_id]
+    @movie.image_url = params[:image_url]
+    @movie.save
+    redirect_to("http://localhost:3000/movies")
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    redirect_to("http://localhost:3000/movies")
+  end
+
+end
+
